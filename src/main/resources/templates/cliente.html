@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Formulario de Carga de Cliente</h1>
+	<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+		
+			<label for="numdoc">Documento</label> 
+			<input type="number"	id="numdoc" th:field="*{nroDocumento}">
+		<br>
+		
+			<label for="fechanac">Nacimiento</label>			
+			<input type="date"	id="fechanac" th:field="*{fechaNacimiento}">
+		<br>
+		
+			<label for="tipo">Tipo</label> 
+			<input type="text" id="tipo" th:field="*{tipoDocumento}">
+		<br>
+		
+			<label for="codigo">Cod Area</label> 
+			<input type="number" id="codigo" th:field="*{codigoAreaTelefono}">		
+		<br>
+		
+			<label for="numtel">Telefono</label> 
+			<input type="number" id="numtel" th:field="*{numTelefono}">		
+		<br>
+		
+			<label for="email">Email</label> 
+			<input type="email" id="email" th:field="*{email}">
+		<br>
+
+		<div>
+			<button type="submit" value="Agregar">Agregar</button>
+		</div>
+
+	</form>
+
+<!-- ---------------------------------------------------------------- -->
+
+<h3>Lista de Clientes</h3><br>
+			<div>
+				<table>
+				    <tr>
+				      <th>Num Doc</th>
+				      <th>Fecha</th>
+				      <th>otraFecha</th>
+				      <th>Tipo</th>
+				      <th>Cod</th>
+				      <th>Telefono</th>
+				      <th>Email</th>				      
+				    </tr>
+					<tr th:each="cli : ${clientes}">
+						<td th:text="${cli.nroDocumento}"></td>
+						<td th:text="${cli.fechaNacimiento}"></td>
+						<td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
+						<td th:text="${cli.tipoDocumento}"></td>
+						<td th:text="${cli.codigoAreaTelefono}"></td>
+						<td th:text="${cli.numTelefono}"></td>
+						<td th:text="${cli.email}"></td>						
+					</tr>
+				</table>
+			</div>
+
+</body>
+</html>
