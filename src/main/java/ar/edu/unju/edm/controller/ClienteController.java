@@ -1,5 +1,8 @@
 package ar.edu.unju.edm.controller;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +32,27 @@ public class ClienteController {
 	}
 
 	@PostMapping("/cliente/guardar")
-	public String guardarNuevoProducto(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {
+	public String guardarNuevoProducto(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {		
 		LOGGER.info("METHOD: ingresando el metodo Guardar");
 		clienteService.guardarCliente(nuevoCliente);		
 		LOGGER.info("Tamaño del Listado: "+ clienteService.obtenerTodosClientes().size());
+		//llamo a este método para que puedan ver cómo trabajar con fechas
+		trabajarConFechas();
 		return "redirect:/cliente/mostrar";
+	}
+	
+	public void trabajarConFechas() {
+		//algunas cosas con fecha;
+		//obtengo tres fechas
+		LocalDate fecha1 = clienteService.obtenerTodosClientes().get(0).getFechaNacimiento();
+		LocalDate fecha2 = LocalDate.now();
+		LocalDate fecha3 = LocalDate.of(2020, 3, 25);
+		//calculo el período entre dos de ellas
+		Period periodo = Period.between(fecha1,fecha2);
+		//una vez que tengo el período puedo saber sus cantidades en días meses y años
+		int dias = periodo.getDays();		
+		System.out.println("dias: "+dias);
+		//revisen la salida en la consola, debería dar la diferencia en días
+		//todo esto nos debe hacer revisar la documentación de las clases LocalDate, LocalTime, LocalDateTime y Period
 	}
 }

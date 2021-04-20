@@ -50,7 +50,9 @@
 				      <th>Tipo</th>
 				      <th>Cod</th>
 				      <th>Telefono</th>
-				      <th>Email</th>				      
+				      <th>Cod - Telefono</th>
+				      <th>Email</th>		
+				      <th>Tiempo Transcurrido</th>		      
 				    </tr>
 					<tr th:each="cli : ${clientes}">
 						<td th:text="${cli.nroDocumento}"></td>
@@ -59,6 +61,7 @@
 						<td th:text="${cli.tipoDocumento}"></td>
 						<td th:text="${cli.codigoAreaTelefono}"></td>
 						<td th:text="${cli.numTelefono}"></td>
+						<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
 						<td th:text="${cli.email}"></td>						
 					</tr>
 				</table>
