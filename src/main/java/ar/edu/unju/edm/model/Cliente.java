@@ -2,6 +2,7 @@ package ar.edu.unju.edm.model;
 
 import java.time.LocalDate;
 //import java.util.Date;
+import java.time.Period;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,17 @@ public class Cliente {
 	private int codigoAreaTelefono;
 	private int numTelefono;
 	private String email;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaUltimaCompra;
 	
+	public LocalDate getFechaUltimaCompra() {
+		return fechaUltimaCompra;
+	}
+
+	public void setFechaUltimaCompra(LocalDate fechaUltimaCompra) {
+		this.fechaUltimaCompra = fechaUltimaCompra;
+	}
+
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
@@ -73,6 +84,19 @@ public class Cliente {
 		this.email = email;
 	}
 	
+	public int getEdad() {		
+		int edad = 0;
+		LocalDate hoy = LocalDate.now();
+		Period periodo = Period.between(fechaNacimiento, hoy);
+		edad = periodo.getYears();		
+		return edad;
+	}
 	
+	public String getTiempoDesdeUltimaCompra() {
+		LocalDate fechaActual = LocalDate.now();
+		Period periodo = Period.between(fechaUltimaCompra, fechaActual);
+		return " T Desde Ultima Compra  Año: " + periodo.getYears() + " Mes: " + periodo.getMonths() + " Dia: " + periodo.getDays() ;		
+		 	
+	}
 
 }

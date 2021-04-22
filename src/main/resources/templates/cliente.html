@@ -32,6 +32,9 @@
 			<input type="email" id="email" th:field="*{email}">
 		<br>
 
+			<label for="fechaultima">Ultima Compra</label>			
+			<input type="date"	id="fechaultima" th:field="*{fechaUltimaCompra}">
+		<br>
 		<div>
 			<button type="submit" value="Agregar">Agregar</button>
 		</div>
@@ -52,7 +55,8 @@
 				      <th>Telefono</th>
 				      <th>Cod - Telefono</th>
 				      <th>Email</th>		
-				      <th>Tiempo Transcurrido</th>		      
+				      <th>Edad</th>
+				      <th>Datos Adicionales</th>		      
 				    </tr>
 					<tr th:each="cli : ${clientes}">
 						<td th:text="${cli.nroDocumento}"></td>
@@ -62,7 +66,9 @@
 						<td th:text="${cli.codigoAreaTelefono}"></td>
 						<td th:text="${cli.numTelefono}"></td>
 						<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
-						<td th:text="${cli.email}"></td>						
+						<td th:text="${cli.email}"></td>
+						<td th:text="${cli.getEdad()}"></td>
+						<td th:text="${cli.getTiempoDesdeUltimaCompra()}"></td>
 					</tr>
 				</table>
 			</div>
