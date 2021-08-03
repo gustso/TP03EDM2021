@@ -21,7 +21,7 @@ public class ClienteController {
 	private static final Log LOGGER = LogFactory.getLog(ClienteController.class);
 	
 	@Autowired
-	@Qualifier("unImp")
+	@Qualifier("otroImp")
 	IClienteService clienteService;
 	
 	@GetMapping("/cliente/mostrar")
@@ -32,7 +32,7 @@ public class ClienteController {
 	}
 
 	@PostMapping("/cliente/guardar")
-	public String guardarNuevoProducto(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {		
+	public String guardarNuevoCliente(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {		
 		LOGGER.info("METHOD: ingresando el metodo Guardar");
 		clienteService.guardarCliente(nuevoCliente);		
 		LOGGER.info("Tamaño del Listado: "+ clienteService.obtenerTodosClientes().size());

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Cliente;
+import ar.edu.unju.edm.model.Producto;
 import ar.edu.unju.edm.service.IClienteService;
 import ar.edu.unju.edm.util.ListadoClientes;
 
@@ -35,6 +36,13 @@ public class ClienteServiceImp implements IClienteService{
 	public List<Cliente> obtenerTodosClientes() {
 		// TODO Auto-generated method stub
 		return listadoClientes;
+	}
+
+	
+	@Override
+	public void guardarCompra(Producto unProducto) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<div class="modal-header">
+	<h5 class="modal-title" id="editarModalTitulo">Comprar</h5>
+	<button type="button" class="close" data-dismiss="modal"
+		aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<form id="formProducto" th:object="${productoSeleccionado}" th:action="@{/producto/confirmarVender}"
+		method="post">
+		<div class="form-group row">
+			<label for="numdoc" class="col-sm-2 col-form-label">Codigo</label>
+			<div class="col-sm-10">
+				<input type="number" id="numdoc" th:field="*{codProducto}"
+					class="form-control">
+			</div>
+			<label for="numdoc" class="col-sm-2 col-form-label">Nombre</label>
+			<div class="col-sm-10">
+				<input type="text" id="numdoc" th:field="*{nombreProducto}"
+					class="form-control">
+			</div>
+			<label for="numdoc" class="col-sm-2 col-form-label">Precio</label>
+			<div class="col-sm-10">
+				<input type="number" id="numdoc" th:field="*{precio}"
+					class="form-control">
+			</div>
+			<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
+			<div class="col-sm-10">
+				<input type="number" id="cantidad" class="form-control">
+			</div>
+			<label for="cantidad" class="col-sm-2 col-form-label">Cliente</label>
+			<div class="col-sm-10">
+				<div>
+				<select th:field="*{cliente}"
+					class="custom-select mt-3 mb-3 border-info" required>
+					<option th:each="c :${clientes}"
+						th:value="${c.nroDocumento}" th:text="${c.email}"
+						value="----"></option>
+				</select>
+			</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			<button type="submit" class="btn btn-primary">Confirmar
+				Compra</button>
+		</div>
+
+
+	</form>
+</div>
+
+
+</body>
+</html>
