@@ -10,6 +10,7 @@ public class Producto {
 	
 	
 	@Id
+	private String id;
 	private Integer codProducto;
 	private String nombreProducto;
 	private Double precio;
@@ -106,6 +107,14 @@ public class Producto {
 		} else if (!stock.equals(other.stock))
 			return false;
 		return true;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

@@ -15,7 +15,7 @@ public interface ProductoService {
 	public void comprarProducto(Producto unProducto) throws Exception;
 	public void modificarProducto(Producto productoAModificar);
 	public void eliminarProducto(Producto productoAEliminar);
-	public Producto obtenerUnProducto(Integer idProducto) throws Exception;
+	public Producto obtenerUnProducto(String idProducto) throws Exception;
 	public ArrayList<Producto> obtenerTodosProductos();
 	public Producto obtenerProductoNuevo();
 	public Producto obtenerUltimoProducto();

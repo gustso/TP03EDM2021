@@ -48,7 +48,7 @@ public class ProductoController {
 		//byte[] content = file.getBytes();
 		//String base64 = Base64.getEncoder().encodeToString(content);
 		//nuevoProducto.setImagen(base64);
-		nuevoProducto.setCodProducto(3);
+		//nuevoProducto.setCodProducto(3);
 		GUSTAVO.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		iProductoService.guardarProducto(nuevoProducto);
 		//mostrar el listado de producto luego de la carga de un producto		
@@ -78,8 +78,8 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/producto/vender/{id}")	
-	public String editarProductoVender(Model model, @PathVariable(name="id") int id) throws Exception {
-		GUSTAVO.error("solo de prueba: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	public String editarProductoVender(Model model, @PathVariable(name="id") String id) throws Exception {
+		
 		Producto productoSeleccionado = new Producto();		
 		try {		
 			productoSeleccionado = iProductoService.obtenerUnProducto(id);		
@@ -95,7 +95,8 @@ public class ProductoController {
 	@PostMapping("/producto/confirmarVender")
 	public String confirmarProductoVender(@ModelAttribute("productoSeleccionado") Producto prodComprado, Model model) throws Exception {		
 		GUSTAVO.error("solo de prueba: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-		iProductoService.comprarProducto(prodComprado);		
+		iProductoService.comprarProducto(prodComprado);
+		GUSTAVO.error("solo de prueba: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		clienteService.guardarCompra(prodComprado);		
 		return("redirect:/producto/vender");
 	}

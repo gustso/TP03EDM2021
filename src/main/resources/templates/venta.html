@@ -18,11 +18,11 @@
 					<div class="card" style="width: 18rem;">
 						<img src="/img/producto.png" class="card-img-top" alt="hola">
 						<div class="card-body">
-							<h5 class="card-title" th:text="${'item Id - ' + p.codProducto}">Id</h5>
+							<h5 class="card-title" th:text="${'item Id - ' + p.id}">Id</h5>
 							<p class="card-text" th:text="${p.precio}">Name</p>
 							<p class="card-text" th:text="${p.nombreProducto}">Desc</p>							
 							<a class="stretched-link btn btn-primary link-compra" 
-								th:href="@{'/producto/vender/'+${p.codProducto}}"><i
+								th:href="@{'/producto/vender/'+${p.id}}"><i
 								class="fas fa-shopping-cart mr-2"></i> Comprar</a> 
 						</div>
 					</div>

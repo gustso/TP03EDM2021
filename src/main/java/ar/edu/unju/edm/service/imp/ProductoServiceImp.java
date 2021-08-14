@@ -42,7 +42,7 @@ public class ProductoServiceImp implements ProductoService{
 	}
 
 	@Override
-	public Producto obtenerUnProducto(Integer idProducto) throws Exception {
+	public Producto obtenerUnProducto(String idProducto) throws Exception {
 		// TODO Auto-generated method stub
 		return productoRepo.findById(idProducto).orElseThrow(()->new Exception("El producto NO existe"));
 	}
@@ -68,7 +68,7 @@ public class ProductoServiceImp implements ProductoService{
 	@Override
 	public void comprarProducto(Producto productoModificado) throws Exception {
 		// TODO Auto-generated method stub
-		Producto productoAModificar = productoRepo.findById(productoModificado.getCodProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		Producto productoAModificar = productoRepo.findById(productoModificado.getId()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
 		productoAModificar.setCliente(productoModificado.getCliente());
 		productoRepo.save(productoAModificar);
 		

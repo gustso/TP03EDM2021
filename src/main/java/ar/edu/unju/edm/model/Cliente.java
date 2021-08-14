@@ -1,8 +1,7 @@
 package ar.edu.unju.edm.model;
 
-import java.io.Serializable;
+
 import java.time.LocalDate;
-//import java.util.Date;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Document(collection="Clientes")
-public class Cliente implements Serializable{
+public class Cliente{
 	@Id	
 	private Integer nroDocumento;
 	
@@ -31,8 +30,7 @@ public class Cliente implements Serializable{
 	private String email;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaUltimaCompra;
-	//@DBRef
-	//@JsonBackReference
+	//@DBRef	
 	private List<Producto> productosComprados = new ArrayList<Producto>();
 		
 	public Cliente() {
